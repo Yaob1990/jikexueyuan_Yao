@@ -1,0 +1,2116 @@
+@charset "UTF-8";
+/**
+* @file:      Neat.css
+* @author:    一丝
+* @update:    2016年08月10日22:05:05
+* @copyright: 基于 normalize.css | MIT License
+*/
+/**
+* Neat.css 解决的问题
+* 基于业务需要兼容的浏览器做到以下几点：
+* 1.解决BUG，特别是低级浏览器的常见BUG；
+* 2.统一效果，但不盲目追求重置为0；
+* 3.向后兼容；
+* 4.考虑响应式；
+* 5.考虑移动设备。
+*/
+/* ==========================================================================
+ 有即是无，无即是有
+ ========================================================================== */
+body, dl, dd,
+ul, ol,
+h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, legend, input, textarea, optgroup,
+p, blockquote, figure, hr, menu, dir,
+thead, tbody, tfoot, th, td {
+  margin: 0;
+  padding: 0; }
+
+/**
+* 非大面积文字排版网站通常不需要列表项，如果需要可单独设置
+*/
+ul, ol {
+  list-style-type: none;
+  list-style-image: none; }
+
+/* ==========================================================================
+ 链接
+ ========================================================================== */
+/**
+* 1. 去除链接默认的下划线，提高文字可读性
+* 2. 去掉 IE 10+ 点击链接时的灰色背景
+*/
+a {
+  text-decoration: none;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */ }
+
+/**
+* 去掉点击时的焦点框，同时保证使用键盘可以显示焦点框
+*/
+a:active,
+a:hover {
+  outline-width: 0; }
+
+/**
+* 统一 Chrome 和 Safari 的焦点框样式
+* Chrome 中 thin 关键字放大页面后焦点框不会放大 http://jsbin.com/ehakom/1
+* Firefox 中 box-shadow 会导致焦点框位置偏移，需用「outline-offset」修正
+*
+*/
+a:focus {
+  outline: 1px dotted; }
+
+/* ==========================================================================
+ 字体和基础排版
+ ========================================================================== */
+/**
+* 1.防止 iOS 横屏字号放大，同时保证在PC上 zoom 功能正常
+*/
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* 1 */
+  font-size: 62.5%;
+  /* 10/16=62.5% */ }
+
+body {
+  font-size: 14px;
+  line-height: 1.8; }
+
+/**
+* 所有 font-family 小写，存在空格的字体名加单引号
+* @default-font: 'helvetica neue', tahoma, \5B8B\4F53, sans-serif;
+* @heading-font: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti,
+  \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, 'wenquanyi micro hei', sans-serif;
+* @code-font: monaco, menlo, consolas, monospace;
+*/
+/**
+* 中文优先使用冬青黑体简体(OS X)、微软雅黑(Windows)和文泉驿微米黑(Linux)
+* 西文使用 tahoma
+* 1. 防止元素中「font-family」不能继承
+* 2. 西文字体和 OS X 字体写在前面
+* 3. Opera 12.1 之前版本不支持中文字体的英文名称
+* 4. 微软雅黑「\5FAE\8F6F\96C5\9ED1」,中易宋体「\5B8B\4F53」
+*/
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'helvetica neue', arial, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+  -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+  /* 5 */
+  text-spacing: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+  /* 5 */ }
+
+/**
+* 中文小于 12px 可读性很差
+* 1. 统一 IE 6-7 中字体大小
+* 2. 统一 Firefox 4+，Safari 5 和 Chrome 中「section」和「article」内的字体大小
+*/
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+h1 {
+  font-size: 36px; }
+
+h2 {
+  font-size: 30px; }
+
+h3 {
+  font-size: 22px; }
+
+h4 {
+  font-size: 18px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  font-size: 12px; }
+
+/**
+* 修正「abbr」元素在 Firefox 外其他浏览器没有下划线的问题
+* 添加问号光标，明确语义
+*/
+abbr,
+acronym {
+  border-bottom: 1px dotted;
+  /* 1 */
+  cursor: help;
+  /* 2 */ }
+
+/**
+* Firefox3+，Safari4/5 和 Chrome 中统一设置为粗体
+*/
+b,
+strong {
+  font-weight: bold; }
+
+/**
+* 修正 Safari5 和 Chrome 中没有样式的问题
+*/
+dfn {
+  font-style: italic; }
+
+/**
+* 修正 Firefox 和其他浏览器之间的差异
+*/
+hr {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/**
+* 网页标记，荧光笔
+* 修正 IE6-11 中没有样式的问题
+*/
+mark {
+  background-color: #d2e5ff;
+  color: #000; }
+
+/**
+* 统一代码的字体设置
+* 字体要能明确区分数字 0 和字母 o
+* Mac 优先使用 Monaco，Windows 优先使用 Consolas
+* XP自带 Courier New
+* Windows 7开始自带的 Consolas
+* Mac上自带的Monaco，Osaka-Mono
+*/
+code,
+kbd,
+pre,
+samp {
+  font-family: monaco, menlo, consolas, 'courier new', courier, monospace; }
+
+/**
+* 增强所有浏览器中 pre 标签中文本的可读性
+* 1. IE 6-7 不支持 pre-wrap
+* 2. pre 标签应当包含滚溢出
+*/
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  /* 1 */
+  word-wrap: break-word;
+  overflow: auto; }
+
+/**
+* 行内引用
+* IE 6-7 不支持 quotes 属性
+* 现代浏览器去除 quotes 内容
+*/
+q {
+  quotes: none; }
+
+/**
+* Safari 4 不支持<q>标签
+*/
+q:before,
+q:after {
+  content: '';
+  content: none; }
+
+/**
+* 中文网页<small>元素字号小于 12px 不易阅读
+*/
+small {
+  font-size: 85.7%;
+  /* 12/14=0.8571428571 */ }
+
+/**
+* 防止所有浏览器中的<sub>和<sup>影响行高
+* http://jsbin.com/usoyal/1/edit
+*/
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -.5em; }
+
+sub {
+  bottom: -.25em; }
+
+/* ==========================================================================
+ 表格
+ ========================================================================== */
+/**
+* 合并单元格边框
+*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+* 修复 IE 中 th 不能继承 text-align 的问题并统一左对齐
+* http://jsbin.com/evoxif/2/edit
+*/
+th {
+  text-align: left; }
+
+/**
+* 单元格添加边框
+*/
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px 10px; }
+
+/**
+* 表头底部边框
+*/
+table th {
+  font-weight: inherit;
+  border-bottom-width: 2px;
+  border-bottom-color: #ccc; }
+
+/* ==========================================================================
+ 嵌入元素
+ ========================================================================== */
+/**
+* 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
+* 2. 修正 IE8 图片消失bug
+* 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形
+    http://jsbin.com/aJoTUca/2
+* 4. 让图片支持响应式
+* 5. 去除现代浏览器图片底部的空隙
+* 6. 修复 IE7 图片缩放失真
+*/
+img {
+  border-style: none;
+  /* 1 */
+  width: auto\9;
+  /* 2 */
+  height: auto;
+  /* 3 */
+  max-width: 100%;
+  /* 4 */
+  vertical-align: top;
+  /* 5 */
+  -ms-interpolation-mode: bicubic;
+  /* 6 */ }
+
+/**
+* 修复 IE9 中的「overflow」的怪异表现
+*/
+svg:not(:root) {
+  overflow: hidden; }
+
+/* ==========================================================================
+ 表单
+ ========================================================================== */
+/**
+* 定义一致的边框、外边距和内边距
+*/
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+/**
+* 1. 修正 IE 6-9 中颜色不能继承的问题
+* 2. 修正 Firefox3 中文字不换行的问题
+* 3. 修正 IE6-7 中怪异的对齐方式
+*/
+legend {
+  border-style: none;
+  /* 1 */
+  white-space: normal;
+  /* 2 */
+  *margin-left: -7px;
+  /* 3 */ }
+
+/**
+* 1. 修正所有浏览器中字体不继承的问题
+* 2. 修正所有浏览器中字号不继承的问题
+* 3. 修正 Firefox 3+， Safari5 和 Chrome 中外边距不同的问题
+* 4. 改善在所有浏览器下的垂直对齐方式
+*/
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  vertical-align: baseline;
+  /* 4 */
+  *vertical-align: middle;
+  /* 4 */ }
+
+/**
+* 修正 IE7 随着字数增加边距不断增加的问题
+*/
+input,
+button {
+  *overflow: visible; }
+
+/**
+* 统一各浏览器「text-transform」不会继承的问题
+* http://jsbin.com/iqecic/1/edit
+* http://tjvantoll.com/2012/07/10/default-browser-handling-of-the-css-text-transform-property/
+*/
+button,
+select {
+  text-transform: none; }
+
+/**
+* 1. 避免 Android 4.0.* 中的 WebKit bug ，该bug会破坏原生的
+ 「audio」 和「video」的控制器
+* 2. 更正 iOS 中无法设置可点击的「input」的问题
+* 3. 统一其他类型的「input」的光标样式
+*/
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/**
+* 重置按钮禁用时光标样式
+*/
+button[disabled],
+input[disabled] {
+  cursor: default; }
+
+/**
+* 1. 修正 IE 8/9 box-sizing 被设置为「content-box」的问题
+* 2. 移除 IE 8/9 中多余的内边距
+* 3. 移除 IE7 中多余的内边距(IE6 中任然存在)
+*/
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+  *height: 13px;
+  /* 3 */
+  *width: 13px;
+  /* 3 */ }
+
+/**
+* 1. 修正 Safari 5 和 Chrome 中「appearance」被设置为「searchfield」的问题
+* 2. 修正 Safari 5 和 Chrome 中「box-sizing」被设置为 「border-box」的问题
+*/
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+/**
+* 1.移除 OS X 中 Safari5 和 Chrome 搜索框内侧的左边距
+* 2.如果需要隐藏清除按钮需要加上
+ input[type="search"]::-webkit-search-cancel-button
+*/
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+* 移除 Firefox 3+ 的内边距
+*/
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+* 修正 Chrome 中 input [type="number"] 在特定高度和 font-size 时,
+* 下面一个箭头光标变成「cursor: text」
+* @demo: http://jsfiddle.net/FFXEc/
+* 动画演示：http://gtms04.alicdn.com/tps/i4/T18kd8FCtaXXc_FhcF-330-350.gif
+*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+* 1. 移除 IE6-11 中默认的垂直滚动条
+* 2. 禁止水平拖动，防止破坏布局
+*/
+textarea {
+  overflow: auto;
+  /* 1 */
+  resize: vertical;
+  /* 2 */ }
+
+/**
+* 修正 Chrome 30- option 中文字无法显示的问题
+* http://jsbin.com/avujas/1/edit
+*/
+select:disabled option:checked,
+option:disabled:checked {
+  color: #d2d2d2; }
+
+/**
+* 修正 Safari 3+, Chrome 1+ Placeholder 居中问题
+*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input {
+    line-height: normal !important; } }
+/**
+* 修正 Firefox 19+ Placeholder 设置了opacity 的问题
+*/
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: darkGray;
+  opacity: 1; }
+
+/**
+* label 元素给予手型，暗示此处可点击
+*/
+label {
+  cursor: pointer; }
+
+/**
+* 统一 select 样式, Firefox 中有 padding:1px 0
+* http://jsbin.com/avujas/1/edit
+*/
+select[size],
+select[multiple],
+select[size][multiple] {
+  border: 1px solid #aaa;
+  padding: 0; }
+
+/* ==========================================================================
+ HTML5 元素
+ ========================================================================== */
+/**
+* 修正未定义为「block」的元素
+*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/**
+* 1. 修正未定义为「inline-block」的元素
+* 2. 修正 Chrome、Firefox、Opera 中 「progress」元素 vertical-align 默认值不一致
+*/
+audio,
+canvas,
+video,
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+* 1.防止现代浏览器将没有「controls」属性的 「audio」元素显示出来
+* 2.去掉 iOS 5 中多余的高度
+*/
+audio:not([controls]) {
+  display: none;
+  /* 1 */
+  height: 0;
+  /* 2 */ }
+
+/**
+* 修复 IE 7/8/9，Firefox 3 和 Safari 4 中 「hidden」属性不起作用的问题
+* 在IE、Safari、Firefox 22- 中隐藏「template」元素
+*/
+[hidden], template {
+  display: none; }
+
+/**
+* 为可拖动元素添加拖动的光标
+* http://jsbin.com/apavod/1/edit
+*/
+[draggable] {
+  cursor: move; }
+
+/*
+* 基础布局
+* @ Name:        layout.css V1.0.0
+* @ Author:      一丝
+* @ Update:      2013-9-30 15:39:51;
+* @ Copyright:   MIT License
+*/
+/*
+*@ Name:       inline-block 组件
+*@ Author:     一丝
+*@ Update:     2013-9-29 16:05:04
+*@ Usage:      清除空隙需在外层容器加上 dib-box，dib 可单独使用
+*/
+.dib {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+.dib-box {
+  font-size: 0;
+  /* 所有浏览器 */
+  *word-spacing: -1px;
+  /* IE6/7 */ }
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  .dib-box {
+    letter-spacing: -5px;
+    /* Safari 5- 等不支持 font-size: 0 的浏览器 */ } }
+.dib-box .dib {
+  vertical-align: top;
+  font-size: 12px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: inherit; }
+
+/*
+*@ Name:        自适应两端对齐组件
+*@ Author:      一丝
+*@ Update:      2013-9-29 16:05:04
+*@ Rely：       依赖 inline-block 解决方案
+*@ Usage:       外层加上 justify，内部需要两端对齐的元素都加上 dib,dib 与 justify 不要同时出现
+*@ Demo:        http://jsbin.com/OsEcOMA/1/
+*/
+/**
+* 防止行高增大
+* 尽量不要在父元素上设置行高
+*/
+.justify,
+.dib-box .justify {
+  font-size: 0;
+  line-height: inherit; }
+
+.justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+  /* IE 6-7 */
+  *zoom: 1;
+  /* IE 6-7 触发 hasLayout 使一行也能两端对齐 */
+  -moz-text-align-last: justify;
+  text-align-last: justify;
+  /* IE 8+ */ }
+
+/**
+* 不支持 text-align-last 的浏览器用伪元素模拟
+* 1. margin-left:100% 仅 WebKit 支持
+*/
+.justify:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  /* 1 */ }
+
+/* 子元素取消两端对齐 */
+.justify .dib {
+  -moz-text-align-last: auto;
+  text-align-last: auto;
+  text-justify: auto;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: normal;
+  word-spacing: normal; }
+
+/*
+*@ Name:       CSS 三角形组件
+*@ Author:     一丝
+*@ Update:     2013-9-29 16:05:04
+*@ Usage:
+*/
+.arrow {
+  font-size: 0;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: -2px;
+  border: 0 dashed transparent;
+  border-width: 6px; }
+
+.arrow-top {
+  border-bottom-style: solid;
+  border-bottom-color: #2ab2df; }
+
+.arrow-bottom {
+  border-top-style: solid;
+  border-top-color: #2ab2df; }
+
+.arrow-left {
+  border-right-style: solid;
+  border-right-color: #2ab2df; }
+
+.arrow-right {
+  border-left-style: solid;
+  border-left-color: #2ab2df; }
+
+/* ◤左上角 */
+.arrow-left-top {
+  border-top-style: solid;
+  border-top-color: #2ab2df;
+  border-left-width: 0 !important; }
+
+/* ◥右上角 */
+.arrow-right-top {
+  border-top-style: solid;
+  border-top-color: #2ab2df;
+  border-right-width: 0 !important; }
+
+/* ◣左下角 */
+.arrow-left-bottom {
+  border-bottom-style: solid;
+  border-bottom-color: #2ab2df;
+  border-left-width: 0 !important; }
+
+/* ◢右下角 */
+.arrow-right-bottom {
+  border-bottom-style: solid;
+  border-bottom-color: #2ab2df;
+  border-right-width: 0 !important; }
+
+/*
+*@ Name:       替换元素等比缩放组件
+*@ Author:     一丝
+*@ Update:     2013-9-29 16:05:04
+*@ Usage:      不同的视频网站由于控制栏高度不同，需要JS配合添加对应的 class
+*/
+.fluid-media {
+  position: relative; }
+
+/* 容器 */
+.fluid-media div,
+.fluid-media video,
+.fluid-media embed,
+.fluid-media object,
+.fluid-media iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+
+/* 常见的视频比例 */
+.widescreen {
+  padding-bottom: 56.25%;
+  /* 宽屏 16:9=56.25% */ }
+
+.narrowscreen {
+  padding-bottom: 75%;
+  /* 窄屏 4:3=75% */ }
+
+/* 播放器控制栏的高度，更多网站按需扩展 */
+.youku {
+  padding-top: 40px;
+  /* 优酷 */ }
+
+.wole {
+  padding-top: 40px;
+  /* 我乐 56.com */ }
+
+.tudou {
+  padding-top: 50px;
+  /* 土豆 */ }
+
+.iqiyi {
+  padding-top: 45px;
+  /* 爱奇艺 */ }
+
+.youtube {
+  padding-top: 30px;
+  /* Youtube */ }
+
+/*
+*@ Name:       未知高度垂直居中组件
+*@ Author:     一丝
+*@ Update:     2013-10-13 17:08:36
+*@ Usage:      支持图片，单行或多行文字，以及图文混排
+*/
+/* 去除 inline-block 的空隙 */
+.center-box {
+  font-size: 0;
+  *word-spacing: -1px;
+  /* IE6、7 */
+  height: 100%;
+  /* 继承父级高度 */ }
+
+/* 修复 Safari 5- inline-block 的空隙 */
+@media (-webkit-min-device-pixel-ratio: 0) {
+  .center-box {
+    letter-spacing: -5px; } }
+/* 使用空标签生成一个高度100%的参照元素 */
+.center-box .center-hack {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  font-size: 0;
+  width: 0;
+  height: 100%;
+  vertical-align: middle; }
+
+.center-box .center-body {
+  letter-spacing: normal;
+  word-spacing: normal;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  font-size: 12px;
+  vertical-align: middle;
+  /* 保证文字垂直居中 */
+  padding: 0 !important;
+  /* 防止设置边距导致居中失效 */
+  margin: 0 !important;
+  width: 100%;
+  /* 保证连续字符也能居中 */
+  white-space: normal;
+  /* 保证连续字符换行 */
+  word-wrap: break-word; }
+
+.center-box .center-img {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 100%;
+  text-align: center;
+  /* 图片默认水平居中 */
+  vertical-align: middle;
+  padding: 0 !important;
+  /* 防止设置边距导致居中失效 */
+  margin: 0 !important;
+  font-size: 0; }
+
+.center-box img {
+  vertical-align: middle;
+  /* 去除现代浏览器 img 底部空隙 */ }
+
+/* ==========================================================================
+ 基础工具
+ *@ Name:        utils.css V1.0.0
+ *@ Author:      一丝
+ *@ Update:      2013-9-30 15:39:57;
+ *@ Copyright:   MIT License
+ ========================================================================== */
+/**
+* 闭合浮动
+* @Author: 一丝
+* @Doc: http://nicolasgallagher.com/micro-clearfix-hack/
+*/
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  *zoom: 1;
+  /* IE6-7 触发 hasLayout */ }
+
+/*
+*@ Name:       自适应图文混排组件
+*@ Update:     2013-9-29 19:23:27
+*@ Usage:      如果有溢出的内容需要显示请使用 clearcell
+*@ demo:       http://jsbin.com/EMIvoJohU/1/edit
+*/
+.clearall {
+  overflow: hidden;
+  /* stylelint-disable */
+  _overflow: visible;
+  /* stylelint-enable */
+  *zoom: 1; }
+
+.clearcell {
+  display: table-cell;
+  *zoom: 1; }
+
+.clearcell:after {
+  clear: both;
+  display: block;
+  visibility: visible;
+  overflow: hidden;
+  height: 0 !important;
+  line-height: 0;
+  font-size: xx-large;
+  content: " x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x "; }
+
+/* 强制不换行 */
+.nowrap {
+  white-space: nowrap;
+  word-wrap: normal; }
+
+/* 连续字符换行 */
+.wrap {
+  white-space: normal;
+  word-wrap: break-word; }
+
+.hidden, .hide {
+  display: none; }
+
+/**
+* 文字溢出显示省略号
+* 1. Chrome 21+ bug https://bugs.webkit.org/show_bug.cgi?id=121902
+*/
+.ellipsis {
+  display: block;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  /* 2 */ }
+
+/* --------------------------------------------------------------------------
+ 图片替换
+ -------------------------------------------------------------------------- */
+/** 隐藏文字
+* 1.text-indent:-999em 存在性能问题：
+*   http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/
+*/
+.text-hide {
+  text-indent: 100%;
+  /* 1 */
+  white-space: nowrap;
+  overflow: hidden; }
+
+/**
+* 裁剪方式隐藏元素
+* 1. IE6-8 有严重漏洞，请勿使用 https://www.hkcert.org/my_url/zh/101104_ms_ie_css_tagparsing_vuln
+* 2. VoiceOver 无法读出宽高为 0 的元素
+*/
+.clip-hide {
+  position: absolute !important;
+  /* clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* 1 */
+  padding: 0 !important;
+  border: 0 none !important;
+  height: 1px !important;
+  /* 2 */
+  width: 1px !important;
+  overflow: hidden; }
+
+/* img replace，通过定位方式隐藏内容 */
+.ir {
+  position: relative;
+  z-index: -1;
+  overflow: hidden; }
+
+.ir-bg {
+  position: relative;
+  z-index: 1; }
+
+/**
+* 禁用中文输入法
+* 1. 默认关闭输入法，但用户还可以手动开启，Firefox Linux 版不支持。
+* @note: 仅 IE 5+，Firefox 3+ 支持
+* @doc:  https://developer.mozilla.org/en-US/docs/Web/CSS/ime-mode
+*/
+.ime-inactive {
+  ime-mode: inactive !important;
+  /* 1 */ }
+
+/**
+* 隐藏<select>元素的下拉箭头
+* 1. 隐藏 WebKit 中的下拉箭头
+* 2. Firefox 存在bug，该属性不完全生效，
+    https://bugzilla.mozilla.org/show_bug.cgi?id=649849
+* 3. 实验数值，Firefox for Android text-indent 需要设置大于 5px
+* @doc: https://gist.github.com/joaocunha/6273016
+* @demo: http://jsbin.com/EdiZuvO/1/edit
+*/
+.select-no-appearance {
+  -webkit-appearance: none;
+  /* 1 */
+  -moz-appearance: none;
+  /* 2 */
+  appearance: none;
+  text-overflow: "";
+  /* 3 */
+  text-indent: .01px;
+  /* 3 */ }
+
+/*
+* 1. 防止 OS X 中 Webfont 视觉上看起来变粗
+* 2. Fiefox 25 开始支持「-moz-osx-font-smoothing:auto(默认)|grayscale」
+* Demo: http://jsbin.com/iWItiQe/2
+*/
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  /* 1 */
+  -moz-osx-font-smoothing: grayscale;
+  /* 2 */ }
+
+/**
+* 统一用双线显示人民币符号「&yen;(￥)」
+*/
+.rmb,
+.yuan {
+  font-family: arial;
+  font-style: normal; }
+
+/* 默认按钮样式 */
+.btn {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  display: inline-block;
+  border: 1px solid #ddd;
+  *border: 0 none;
+  border-radius: 2px;
+  *margin-right: .3em;
+  margin-bottom: 0;
+  padding: 0 10px;
+  *padding: 1px 10px;
+  width: auto;
+  height: 21px;
+  line-height: 21px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom-color: #bbb !important;
+  background-color: #f4f4f4;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#eeeeee));
+  background-image: -webkit-linear-gradient(top, #f8f8f8, #eeeeee);
+  background-image: linear-gradient(to bottom, #f8f8f8, #eeeeee);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffeeeeee', GradientType=0); }
+
+.btn,
+.btn:hover,
+.btn:visited {
+  color: #333 !important; }
+
+.btn:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #ededed;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f2f2', endColorstr='#ffe6e6e6', GradientType=0); }
+
+.btn:active {
+  background-color: #ebebeb;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #f2f2f2);
+  background-image: linear-gradient(to bottom, #e6e6e6, #f2f2f2);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#fff2f2f2', GradientType=0); }
+
+/* 错误 */
+.btn-error {
+  border-color: transparent;
+  border-bottom-color: #c21b1b !important;
+  background-color: #ff3636;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff4444), to(#ff2222));
+  background-image: -webkit-linear-gradient(top, #ff4444, #ff2222);
+  background-image: linear-gradient(to bottom, #ff4444, #ff2222);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff4444', endColorstr='#ffff2222', GradientType=0); }
+
+.btn-error,
+.btn-error:hover,
+.btn-error:visited {
+  color: #fff !important; }
+
+.btn-error:hover {
+  background-color: #e41b1b;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ee2020), to(#d51314));
+  background-image: -webkit-linear-gradient(top, #ee2020, #d51314);
+  background-image: linear-gradient(to bottom, #ee2020, #d51314);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee2020', endColorstr='#ffd51314', GradientType=0); }
+
+.btn-error:active {
+  background-color: #df1819;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d51314), to(#ee2020));
+  background-image: -webkit-linear-gradient(top, #d51314, #ee2020);
+  background-image: linear-gradient(to bottom, #d51314, #ee2020);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd51314', endColorstr='#ffee2020', GradientType=0); }
+
+/* 警告 */
+.btn-warning {
+  border-color: transparent;
+  border-bottom-color: #cf370c !important;
+  background-color: #ff4e00;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff5500), to(#ff4400));
+  background-image: -webkit-linear-gradient(top, #ff5500, #ff4400);
+  background-image: linear-gradient(to bottom, #ff5500, #ff4400);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff5500', endColorstr='#ffff4400', GradientType=0); }
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:visited {
+  color: #fff !important; }
+
+.btn-warning:hover {
+  background-color: #ef4000;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff4400), to(#d73900));
+  background-image: -webkit-linear-gradient(top, #ff4400, #d73900);
+  background-image: linear-gradient(to bottom, #ff4400, #d73900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff4400', endColorstr='#ffd73900', GradientType=0); }
+
+.btn-warning:active {
+  background-color: #e73d00;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d73900), to(#ff4400));
+  background-image: -webkit-linear-gradient(top, #d73900, #ff4400);
+  background-image: linear-gradient(to bottom, #d73900, #ff4400);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd73900', endColorstr='#ffff4400', GradientType=0); }
+
+/* 主要 */
+.btn-primary {
+  border-color: transparent;
+  border-bottom-color: #0960ab !important;
+  background-color: #4288c5;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#488fcd), to(#3a7db8));
+  background-image: -webkit-linear-gradient(top, #488fcd, #3a7db8);
+  background-image: linear-gradient(to bottom, #488fcd, #3a7db8);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff488fcd', endColorstr='#ff3a7db8', GradientType=0);
+  background-repeat: repeat-x; }
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:visited {
+  color: #fff !important; }
+
+.btn-primary:hover {
+  background-color: #3579b5;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4087c6), to(#25659c));
+  background-image: -webkit-linear-gradient(top, #4087c6, #25659c);
+  background-image: linear-gradient(to bottom, #4087c6, #25659c);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4087c6', endColorstr='#ff25659c', GradientType=0); }
+
+.btn-primary:active {
+  background-color: #3073ad;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#25659c), to(#4087c6));
+  background-image: -webkit-linear-gradient(top, #25659c, #4087c6);
+  background-image: linear-gradient(to bottom, #25659c, #4087c6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff25659c', endColorstr='#ff4087c6', GradientType=0); }
+
+.btn-disabled {
+  border: 1px solid #e0e0e0;
+  border-bottom-color: #ccc !important;
+  cursor: default; }
+
+.btn-disabled,
+.btn-disabled:hover,
+.btn-disabled:visited {
+  color: #ccc !important;
+  background-color: #ededed;
+  background-repeat: repeat-x;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2f2f2', endColorstr='#ffe6e6e6', GradientType=0); }
+
+/* ==========================================================================
+ 按钮组合
+ ========================================================================== */
+.btn-group {
+  overflow: hidden; }
+
+.btn-group .btn {
+  float: left;
+  margin: 0;
+  border-radius: 0;
+  border-left-width: 0; }
+
+.btn-group .btn-group .btn:first-child {
+  border-left-width: 1px;
+  border-radius: 2px 0 0 2px; }
+
+.btn-group .btn:last-child {
+  border-radius: 0 2px 2px 0; }
+
+/* ==========================================================================
+ 按钮尺寸
+ ========================================================================== */
+.btn-xlarge {
+  padding: 0 20px;
+  height: 43px;
+  line-height: 43px;
+  font-size: 18px; }
+
+.btn-large {
+  padding: 0 20px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 14px; }
+
+.btn-medium {
+  height: 28px;
+  line-height: 28px;
+  padding: 0 20px; }
+
+.btn-small {
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px; }
+
+.btn-xsmall {
+  height: 23px;
+  line-height: 23px; }
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0; }
+
+/*
+* 表格
+* @ name:        table.css V1.0.0
+* @ author:      一丝
+* @ update:      2014-1-8 19:34:24;
+*/
+/**
+* 只显示水平边框
+* .table
+*/
+.table th,
+.table table th {
+  border: 0 none;
+  border-bottom: 2px solid #ccc; }
+
+.table td,
+.table table td {
+  border: 0 none;
+  border-top: 1px solid #ddd; }
+
+/**
+* 隔行换色
+* .table-striped
+*/
+.table-striped tbody tr:nth-child(odd) td {
+  background-color: #fafafa; }
+
+/**
+* 鼠标 hover 时换色
+* .table-hover
+*/
+.type .table-hover tbody tr:hover td,
+.type .table-hover thead tr:hover th {
+  background-color: #f6f6f6; }
+
+/**
+* 响应式表格
+*/
+@media (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-right: 1px solid #ddd;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch; }
+
+  .table-responsive table {
+    margin: 0; }
+
+  .table-responsive th,
+  .table-responsive td {
+    white-space: nowrap; }
+
+  .table-responsive .table {
+    border: 0 none; } }
+/**
+* 打印样式
+* @file:     print.css v1.0.0
+* @author:   一丝
+* @update:   2013-11-26 11:35:12;
+* @doc:      https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css#L207
+*/
+@media print {
+  /**
+   * 1. 禁用所有背景色和阴影
+   * 2. 黑色打印更快
+   * @doc: h5bp.com/s
+   */
+  * {
+    background-color: transparent !important;
+    /* 1 */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    /* 1 */
+    text-shadow: none !important;
+    /* 1 */
+    color: #000 !important;
+    /* 2 */ }
+
+  a,
+  a:visited {
+    text-decoration: underline; }
+
+  a[href]:after {
+    content: "(" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: "(" attr(title) ")"; }
+
+  /**
+   * 空链接不显示链接文字
+   */
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: ""; }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */ }
+
+  tr,
+  img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  @page {
+    margin: .5cm; }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2,
+  h3 {
+    page-break-after: avoid; } }
+/*# sourceMappingURL=cube.css.map */
+.clearfix::after {
+  display: block;
+  content: "clear";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden; }
+
+.w_1000 {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative; }
+
+.wrapper div h1 {
+  float: left; }
+  .wrapper div h1 img {
+    width: 109px;
+    height: 40px;
+    margin-top: 10px; }
+
+.head {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #EEEFEE; }
+  .head nav {
+    width: 500;
+    height: 60px;
+    float: left;
+    padding-left: 30px; }
+    .head nav ul li {
+      float: left;
+      font-size: 16;
+      font-weight: bold;
+      line-height: 60px;
+      margin-left: 50px;
+      position: relative;
+      z-index: 200; }
+      .head nav ul li a {
+        color: #000000; }
+      .head nav ul li span {
+        height: 17px;
+        display: inline-block; }
+      .head nav ul li .arrow {
+        margin-left: 8px;
+        width: 4px;
+        height: 4px;
+        border-left: 1px solid #4DC36F;
+        border-top: 1px solid #4DC36F;
+        transform: rotate(-135deg);
+        vertical-align: -2px;
+        margin-bottom: 2px; }
+      .head nav ul li:hover .arrow .wrapper .head nav ul li:hover .arrow {
+        -webkit-animation: rotate 1s ease normal; }
+  .head .login {
+    float: right;
+    margin-top: 5px; }
+    .head .login li {
+      float: right;
+      margin-right: 30px;
+      line-height: 60px; }
+      .head .login li span {
+        width: 17px;
+        height: 17px;
+        width: 17px;
+        height: 17px;
+        display: inline-block; }
+      .head .login li:first-child span {
+        background: url("../img/search-icon.png?__sprite") no-repeat;
+        background-size: 17px 17px; }
+      .head .login li:nth-child(2) span {
+        background: url("../img/app-icon.png?__sprite") no-repeat;
+        background-size: 17px 17px; }
+      .head .login li:nth-child(3) span {
+        background: url("../img/login-icon.png?__sprite") no-repeat;
+        background-size: 17px 17px; }
+
+/*二级菜单-职业学院*/
+.submenu {
+  display: none;
+  position: absolute;
+  width: 280px;
+  height: 324px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  z-index: 300; }
+  .submenu h3 {
+    font-size: 14px;
+    background: #FBFBFB;
+    /*margin-top:10px;*/
+    height: 28px;
+    line-height: 28px;
+    margin-left: 10px; }
+    .submenu h3:first-child {
+      margin-top: 10px; }
+  .submenu a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 30px;
+    margin-left: 10px; }
+    .submenu a i {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 10px; }
+    .submenu a:nth-child(2) i {
+      background: url("../img/allicon.png?__sprite") -15px -26px no-repeat;
+      background-size: 64px 64px; }
+    .submenu a:nth-child(3) i {
+      background: url("../img/allicon4.png?__sprite") 0 -50px no-repeat;
+      background-size: 16px 128px; }
+    .submenu a:nth-child(5) i {
+      background: url("../img/allicon4.png?__sprite") 0 0px no-repeat;
+      background-size: 16px 128px; }
+    .submenu a:nth-child(6) i {
+      background: url("../img/allicon4.png?__sprite") 0 -31px no-repeat;
+      background-size: 16px 128px; }
+    .submenu a:nth-child(8) i {
+      background: url("../img/allicon.png?__sprite") -45px -14px no-repeat;
+      background-size: 64px 64px; }
+    .submenu a:nth-child(9) i {
+      background: url("../img/allicon4.png?__sprite") 0 -69px no-repeat;
+      background-size: 16px 128px; }
+
+/*会员课程*/
+.vip {
+  display: none;
+  position: absolute;
+  width: 280px;
+  height: 260px;
+  background: #ffffff;
+  border: 1px solid #eeeeee; }
+  .vip a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 40px; }
+    .vip a span {
+      float: right;
+      margin-right: 10px; }
+    .vip a i {
+      background: url("../img/allicon.png?__sprite") 0 0 no-repeat;
+      background-size: 64px 64px;
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px; }
+    .vip a:first-child i {
+      background-position: 0 -13px; }
+    .vip a:nth-child(2) i {
+      background-position: -45px 0; }
+    .vip a:nth-child(3) i {
+      background-position: -30px -13px; }
+    .vip a:nth-child(4) i {
+      background-position: 0px 0; }
+    .vip a:nth-child(5) i {
+      background-position: -15px -13px; }
+    .vip a:nth-child(6) i {
+      background-position: -16px 0; }
+
+/*极客社区*/
+.social {
+  display: none;
+  position: absolute;
+  width: 280px;
+  height: 160px;
+  background: #ffffff;
+  border: 1px solid #eeeeee; }
+  .social a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 40px; }
+    .social a span {
+      float: right;
+      margin-right: 10px; }
+    .social a i {
+      background: url("../img/allicon.png?__sprite") 0 0 no-repeat;
+      background-size: 64px 64px;
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      margin-left: 10px;
+      margin-right: 10px; }
+    .social a:first-child i {
+      background-position: 0 -27px; }
+    .social a:nth-child(2) i {
+      background-position: -29px -27px; }
+    .social a:nth-child(3) i {
+      background-position: 0px 2px; }
+    .social a:nth-child(4) i {
+      background-position: -30px 0px; }
+
+/*内容区域主体*/
+.content {
+  background: #F6F6F6;
+  padding-top: 20px;
+  padding-bottom: 50px; }
+
+#aside {
+  width: 210px;
+  height: 597px;
+  background: #ffffff;
+  position: relative;
+  float: left; }
+
+.allLesson {
+  border: 1px solid #35b558; }
+
+#aside .allLesson h2 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #35b558;
+  text-align: left;
+  line-height: 45px;
+  border-bottom: 1px solid #eeeeee;
+  padding-left: 40px;
+  position: relative; }
+  #aside .allLesson h2::before {
+    content: '';
+    background-image: url(../img/kec.png?__sprite);
+    background-size: 15px 15px;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 14px;
+    top: 13px; }
+
+#aside .allLesson ul li {
+  height: 38px;
+  border-bottom: 1px solid #eeeeee; }
+  #aside .allLesson ul li a {
+    color: #666;
+    line-height: 38px;
+    position: relative;
+    display: block;
+    padding-left: 40px; }
+    #aside .allLesson ul li a::after {
+      content: '';
+      background-image: url(../img/icon-dayu.png?__sprite);
+      background-size: 6px 10px;
+      position: absolute;
+      width: 6px;
+      height: 10px;
+      right: 20px;
+      top: 15px; }
+  #aside .allLesson ul li .list_show {
+    width: 400px;
+    height: 438px;
+    background: #fff;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    /*float: left;*/
+    position: absolute;
+    left: 210px;
+    top: 0;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: none;
+    margin-left: -1px;
+    border: 1px solid #ddd;
+    z-index: 1000; }
+    #aside .allLesson ul li .list_show dl {
+      padding: 0 15px;
+      position: relative; }
+      #aside .allLesson ul li .list_show dl dt {
+        border-bottom: 1px solid #f5f5f5;
+        /*line-height: 45px;*/ }
+      #aside .allLesson ul li .list_show dl dd {
+        margin-bottom: 20px; }
+  #aside .allLesson ul li:hover {
+    padding-left: -40px; }
+    #aside .allLesson ul li:hover a {
+      border-left: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      width: 220px;
+      height: 38px;
+      margin-top: -1px;
+      margin-left: -1px;
+      padding-left: 24px;
+      -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+      border-right: none;
+      background: #fff; }
+    #aside .allLesson ul li:hover .list_show {
+      display: block; }
+
+#aside .lujing a {
+  color: #333333;
+  font-size: 14px;
+  line-height: 40px;
+  display: block;
+  padding-left: 40px;
+  width: 170px;
+  height: 40px;
+  position: relative; }
+  #aside .lujing a span {
+    color: #C7C7C7;
+    font-size: 12px;
+    /*margin-right:10px;*/
+    position: absolute;
+    right: 10px;
+    display: none; }
+
+#aside .lujing ul li:hover a {
+  background-color: #FBFBFB; }
+  #aside .lujing ul li:hover a span {
+    display: inline; }
+
+/*右侧内容区域*/
+#lessonContent {
+  width: 770px;
+  height: auto;
+  float: left;
+  margin-left: 20px;
+  box-sizing: border-box; }
+
+.sortMode {
+  width: 770px;
+  height: 40px;
+  background-color: #fff;
+  box-sizing: border-box; }
+  .sortMode h3 {
+    float: left;
+    padding: 0 21px;
+    background: #fff;
+    border-right: 1px solid #f5f5f5;
+    font-size: 14px;
+    font-weight: lighter;
+    cursor: default;
+    line-height: 40px; }
+  .sortMode dl {
+    height: 40px;
+    /*overflow: hidden;*/
+    position: relative; }
+  .sortMode dd {
+    /*position: relative;*/
+    background: #ffffff;
+    position: absolute;
+    z-index: 100;
+    display: none; }
+
+dt, dd {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 40px; }
+
+dt, dd {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 40px; }
+
+.sortMode dl {
+  text-align: center;
+  float: left;
+  width: 100px;
+  background: #fff;
+  box-sizing: border-box; }
+  .sortMode dl dd {
+    text-align: center;
+    position: relative;
+    /*display: none;*/ }
+  .sortMode dl dt .arrow {
+    margin-left: 2px;
+    width: 1px;
+    height: 1px;
+    border-left: 1px solid #C6C6C6;
+    border-top: 1px solid #C6C6C6;
+    transform: rotate(-135deg);
+    vertical-align: -2px;
+    margin-bottom: 2px; }
+  .sortMode dl:hover {
+    border: 1px solid #eee; }
+    .sortMode dl:hover .arrow {
+      display: none; }
+    .sortMode dl:hover dd {
+      display: block; }
+
+/*右侧切换按钮*/
+.previewMode {
+  float: right; }
+  .previewMode li {
+    position: relative;
+    float: left;
+    width: 36px;
+    height: 38px;
+    border-left: 1px solid #f5f5f5;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer; }
+    .previewMode li .icon {
+      position: relative;
+      top: -1px;
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      vertical-align: middle;
+      background: url(https://s1.jikexueyuan.com/course/images/preview-icon_2ae2eb9.png) no-repeat 0 0;
+      line-height: 40px; }
+  .previewMode .kuai-icon .icon {
+    width: 14px;
+    background: url(https://s1.jikexueyuan.com/course/images/icon-kuai_3c1a8cf.png) no-repeat 0 0;
+    background-size: 14px; }
+  .previewMode .list-icon .icon {
+    width: 19px;
+    background: url(https://s1.jikexueyuan.com/course/images/icon-list_6d9f87f.png) no-repeat center;
+    background-size: 16px 12px; }
+
+/*页面课程*/
+.lessonList {
+  margin-top: 20px; }
+  .lessonList ul li {
+    width: 250px;
+    height: 225px;
+    /*border: 1px solid #bfa3ff;*/
+    background: #fff;
+    float: left; }
+    .lessonList ul li:nth-child(3n+2) {
+      margin-left: 5px; }
+    .lessonList ul li:nth-child(3n+3) {
+      margin-left: 5px; }
+    .lessonList ul li:nth-child(n+4) {
+      margin-top: 5px; }
+    .lessonList ul li:hover {
+      transition: height 0.3s linear; }
+      .lessonList ul li:hover .lessonplay {
+        transition: opacity 0.3s linear;
+        opacity: 1; }
+      .lessonList ul li:hover .lesson-infor {
+        position: relative;
+        height: 158px;
+        background: #fff;
+        border: 1px solid #bfa3ff;
+        transition: height 0.3s linear; }
+      .lessonList ul li:hover .lesson-infor p {
+        transition: opacity 0.3s linear;
+        opacity: 1;
+        display: block;
+        height: 40px; }
+      .lessonList ul li:hover .timeandicon .cf > em {
+        display: block; }
+    .lessonList ul li .lessonimg-box {
+      position: relative; }
+    .lessonList ul li .lessonplay {
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      /*hover*/
+      opacity: 0; }
+      .lessonList ul li .lessonplay i {
+        position: absolute;
+        z-index: 120;
+        width: 50px;
+        height: 50px;
+        display: block;
+        left: 50%;
+        margin-left: -25px;
+        top: 50%;
+        margin-top: -25px;
+        background: url(https://s1.jikexueyuan.com/common/images/player_icon_5c67475.png) 0 0 no-repeat;
+        cursor: pointer;
+        background-size: 50px 50px; }
+  .lessonList .lesson-infor {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 98px;
+    position: relative;
+    overflow: hidden;
+    z-index: 50; }
+    .lessonList .lesson-infor h2 {
+      font-size: 14px;
+      color: #333333;
+      line-height: 36px;
+      margin-bottom: 12px;
+      height: 36px;
+      overflow: hidden; }
+    .lessonList .lesson-infor p {
+      color: gray;
+      font-size: 12px;
+      line-height: 18px;
+      height: 0px;
+      overflow: hidden;
+      /*opacity: 0;*/
+      margin-bottom: 10px;
+      /*display: none;*/ }
+  .lessonList .timeandicon {
+    font-size: 12px;
+    color: gray;
+    position: relative; }
+    .lessonList .timeandicon dl {
+      width: 120px;
+      float: left;
+      white-space: nowrap;
+      box-sizing: border-box; }
+    .lessonList .timeandicon dd {
+      box-sizing: border-box;
+      /*display: inline-block;*/
+      line-height: normal; }
+      .lessonList .timeandicon dd i {
+        background: url(https://s1.jikexueyuan.com/common/images/clok_a413ecf.png) 0 0 no-repeat;
+        width: 14px;
+        height: 14px;
+        display: block;
+        float: left;
+        margin-right: 8px;
+        background-size: 14px 14px; }
+    .lessonList .timeandicon em {
+      font-style: normal; }
+    .lessonList .timeandicon .cf > em {
+      display: none; }
+    .lessonList .timeandicon .cf img {
+      width: 16px;
+      height: 16px;
+      display: block; }
+    .lessonList .timeandicon .cf dl dd:nth-child(2) {
+      display: none; }
+
+/*
+课程第二套布局，前面务必都加唯一的类:lesson-list2
+这样，js中切换lesson-list2即可实现切换。
+*/
+.lesson-list2 .onelesson {
+  height: 100px;
+  width: 765px;
+  padding: 0;
+  background-color: #fff;
+  margin-top: 13px;
+  box-sizing: border-box;
+  position: relative; }
+.lesson-list2 .lessonimg-box {
+  width: 185px;
+  height: 100px;
+  float: left; }
+.lesson-list2 ul li .lessonimg-box {
+  position: relative; }
+.lesson-list2 ul li .lessonplay {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*hover*/
+  opacity: 0; }
+  .lesson-list2 ul li .lessonplay i {
+    position: absolute;
+    z-index: 120;
+    width: 50px;
+    height: 50px;
+    display: block;
+    left: 50%;
+    margin-left: -25px;
+    top: 50%;
+    margin-top: -25px;
+    background: url(https://s1.jikexueyuan.com/common/images/player_icon_5c67475.png) 0 0 no-repeat;
+    cursor: pointer;
+    background-size: 50px 50px; }
+.lesson-list2 ul li:hover .lessonplay {
+  transition: opacity 0.3s linear;
+  opacity: 1; }
+.lesson-list2 .lesson-infor {
+  width: 560px;
+  height: 100px;
+  float: left;
+  margin-left: 20px;
+  position: relative; }
+  .lesson-list2 .lesson-infor h2 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden; }
+  .lesson-list2 .lesson-infor p {
+    color: gray;
+    font-size: 12px;
+    opacity: 1 !important;
+    line-height: 18px;
+    overflow: hidden;
+    margin-bottom: 10px; }
+.lesson-list2 .timeandicon dl {
+  width: 240px;
+  float: left;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-top: 10px; }
+  .lesson-list2 .timeandicon dl dd {
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    line-height: normal;
+    float: left; }
+    .lesson-list2 .timeandicon dl dd:nth-child(2) {
+      margin-left: 20px; }
+    .lesson-list2 .timeandicon dl dd i {
+      background: url(https://s1.jikexueyuan.com/common/images/clok_a413ecf.png) 0 0 no-repeat;
+      width: 14px;
+      height: 14px;
+      display: block;
+      float: left;
+      margin-right: 8px;
+      background-size: 14px 14px; }
+.lesson-list2 .timeandicon .cf em {
+  float: right;
+  margin-right: 20px;
+  font-style: normal; }
+.lesson-list2 .timeandicon .cf img {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  text-align: right; }
+
+/*翻页*/
+#page-nav {
+  text-align: center;
+  margin: 24px 0;
+  height: 28px; }
+  #page-nav ul {
+    font-size: 12px;
+    box-sizing: border-box; }
+    #page-nav ul li {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      margin-left: 5px;
+      line-height: 30px;
+      border: 1px solid #fff;
+      text-align: center;
+      font-size: 12px;
+      background: #fff;
+      color: gray;
+      border: 1px solid #e4e4e4;
+      box-sizing: border-box; }
+  #page-nav input {
+    outline: none;
+    width: 32px;
+    height: 22px;
+    border: 1px solid #e4e4e4;
+    color: #666;
+    line-height: 22px;
+    margin: 0 10px;
+    vertical-align: middle; }
+  #page-nav .pgNext {
+    width: 50px; }
+  #page-nav .pagetotal {
+    width: 50px;
+    border: none; }
+  #page-nav .pagenow {
+    width: 100px;
+    border: none;
+    background: none; }
+  #page-nav .go {
+    width: 32px; }
+  #page-nav .thpoint {
+    border: none;
+    background: none; }
+  #page-nav .pgCurrent {
+    background: #3CBD63;
+    color: #FFFFFF; }
+  #page-nav .page-number:hover {
+    border: 1px solid #3CBD63; }
+
+/*
+=======================================
+                搜索框
+=======================================
+*/
+.searchbox {
+  width: 0px;
+  height: 60px;
+  margin-left: 150px;
+  position: relative;
+  right: 0;
+  z-index: 1000;
+  position: absolute;
+  background: #fff;
+  overflow: hidden; }
+  .searchbox .close-icon {
+    width: 15px;
+    height: 15px;
+    margin-top: 22px;
+    cursor: pointer;
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/close-icon.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    z-index: 1200; }
+  .searchbox .search-icon {
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/search-icon.png) 0 0 no-repeat;
+    background-size: 17px 17px;
+    background-position: 0, 0;
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    margin-top: 22px; }
+  .searchbox input {
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    font-size: 12px;
+    vertical-align: top;
+    margin-left: 10px;
+    padding-left: 20px;
+    outline: none;
+    border: none; }
+  .searchbox .tagbox {
+    display: inline-block;
+    position: absolute;
+    right: 30px; }
+    .searchbox .tagbox a {
+      margin-left: 15px;
+      line-height: 60px;
+      background: #f6f6f6;
+      /*display: inline-block;*/
+      /*height: 12px;*/
+      font-size: 14px;
+      color: #808080;
+      padding: 3px 5px; }
+
+/*footer*/
+.footer {
+  /*margin-top:50px;*/
+  padding-top: 20px;
+  border-top: 1px solid #e4e4e4; }
+
+.jk-logo {
+  float: left; }
+  .jk-logo img {
+    width: 109px;
+    height: 40px; }
+  .jk-logo p {
+    font-size: 12px;
+    color: #999;
+    margin-top: 20px; }
+
+.jkinfor dl {
+  float: left;
+  margin-left: 80px;
+  color: #808080; }
+  .jkinfor dl dt {
+    font-size: 14px;
+    line-height: 30px; }
+  .jkinfor dl dd {
+    font-size: 12px;
+    line-height: 30px; }
+    .jkinfor dl dd a {
+      color: #999999; }
+      .jkinfor dl dd a:hover {
+        color: #35b558; }
+
+.jk-down p {
+  color: #808080;
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: right; }
+
+/*返回顶部小图标
+==============================
+直觉上fix是基于浏览器四边窗口进行定位
+这里首先进行居中，然后居中宽度是w1000
+这里向右偏移510左右即可得到我们需要的效果
+==============================
+
+*/
+.gototop {
+  position: fixed;
+  left: 50%;
+  margin-left: 510px;
+  bottom: 50px;
+  width: 34px; }
+  .gototop .top {
+    /*display: none;*/
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/gotop.jpg) 0 0 no-repeat;
+    background-size: 34px 103px;
+    width: 34px;
+    height: 34px; }
+    .gototop .top:hover {
+      background: url(http://e.jikexueyuan.com/headerandfooter/images/gotop2.jpg) 0 0 no-repeat;
+      background-position: 0 0;
+      background-size: 34px 103px; }
+  .gototop .jk-app {
+    position: relative;
+    display: block;
+    background: #f7f7f7 url(http://e.jikexueyuan.com/headerandfooter/images/phone-1.png) center center no-repeat;
+    background-size: 12px 24px;
+    width: 34px;
+    height: 35px;
+    border-bottom: 1px solid #e0e0e0; }
+    .gototop .jk-app:hover {
+      background: #f7f7f7 url(http://e.jikexueyuan.com/headerandfooter/images/phone-2.png) center center no-repeat;
+      background-size: 12px 24px; }
+      .gototop .jk-app:hover .appewm {
+        display: block; }
+    .gototop .jk-app .appewm {
+      background: url(http://e.jikexueyuan.com/headerandfooter/images/appewm.png) center center no-repeat;
+      background-size: 100%;
+      width: 126px;
+      height: 159px;
+      position: absolute;
+      z-index: 2100;
+      left: -126px;
+      top: -70px;
+      display: none; }

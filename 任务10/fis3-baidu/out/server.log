@@ -1,0 +1,14 @@
+ Listening on http://127.0.0.1:8080
+127.0.0.1 - GET / HTTP/1.1 200 5537 - 28.710 ms
+127.0.0.1 - GET /css/cube_df014f7.css HTTP/1.1 200 15295 - 8.195 ms
+127.0.0.1 - GET /css/baidu_41f8e45.css HTTP/1.1 200 6693 - 13.219 ms
+127.0.0.1 - GET /scripts/jquery-3.1.1_e1abd1a.js HTTP/1.1 200 87268 - 4.301 ms
+127.0.0.1 - GET /scripts/baidu_acecdc2.js HTTP/1.1 200 2525 - 0.904 ms
+127.0.0.1 - GET /img/bg1.jpg HTTP/1.1 200 48983 - 0.914 ms
+127.0.0.1 - GET /img/bg2.jpg HTTP/1.1 200 45162 - 1.106 ms
+127.0.0.1 - GET /img/bg3.jpg HTTP/1.1 200 33891 - 0.903 ms
+127.0.0.1 - GET /img/bd_logo_b15c113.png HTTP/1.1 200 7877 - 0.834 ms
+127.0.0.1 - GET /img/lol.jpeg HTTP/1.1 200 14986 - 0.795 ms
+127.0.0.1 - GET /css/baidu_z_9842614.png HTTP/1.1 200 1638 - 1.316 ms
+127.0.0.1 - GET /css/cube_df014f7.css HTTP/1.1 304 - - 3.695 ms
+127.0.0.1 - GET /css/baidu_41f8e45.css HTTP/1.1 304 - - 2.755 ms

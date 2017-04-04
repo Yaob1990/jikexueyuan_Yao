@@ -1,0 +1,1126 @@
+.w_1000 {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+  .clearfix::after {
+    display: block;
+    content: "clear";
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.head {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #EEEFEE;
+}
+
+.wrapper div h1 {
+    float: left;
+}
+
+.wrapper div h1 img {
+    width: 109px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.wrapper .head nav {
+    width: 500px;
+    height: 60px;
+    float: left;
+    padding-left: 30px;
+}
+
+.wrapper .head nav ul {
+
+}
+
+.wrapper .head nav ul li {
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 60px;
+    margin-left: 50px;
+    position: relative;
+    z-index: 200;
+
+}
+
+.wrapper .head nav ul li a {
+    color: #000000;
+}
+
+.wrapper .head .login li span {
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+}
+
+/*箭头*/
+.wrapper .head nav ul li .arrow {
+    margin-left: 8px;
+    width: 4px;
+    height: 4px;
+    border-left: 1px solid #4DC36F;
+    border-top: 1px solid #4DC36F;
+    transform: rotate(-135deg);
+    vertical-align: -2px;
+    margin-bottom: 2px;
+}
+
+.wrapper .head nav ul li:hover .arrow {
+    -webkit-animation: rotate 1s ease normal;
+}
+
+/*login 右侧图标实现*/
+.wrapper .head .login li:first-child span {
+    background: url("../img/search-icon.png") no-repeat;
+    background-size: 17px 17px;
+}
+
+.wrapper .head .login li:nth-child(2) span {
+    background: url("../img/app-icon.png") no-repeat;
+    background-size: 17px 17px;
+}
+
+.wrapper .head .login li:nth-child(3) span {
+    background: url("../img/login-icon.png") no-repeat;
+    background-size: 17px 17px;
+}
+
+/*右侧小图标定位*/
+.wrapper .head .login li {
+    float: right;
+    margin-right: 30px;
+    line-height: 60px;
+
+}
+
+.wrapper .head .login {
+    float: right;
+    margin-top: 5px;
+}
+
+/*二级菜单-职业学院*/
+.submenu {
+    display: none;
+    position: absolute;
+    width: 280px;
+    height: 324px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    z-index: 300;
+
+}
+
+.submenu h3 {
+    font-size: 14px;
+    background: #FBFBFB;
+    /*margin-top:10px;*/
+    height: 28px;
+    line-height: 28px;
+    margin-left: 10px;
+}
+
+.submenu h3:first-child {
+    margin-top: 10px;
+}
+
+.submenu a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 30px;
+    margin-left: 10px;
+}
+
+/*二级菜单 小图标*/
+.submenu a i {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 10px;
+
+}
+
+.submenu a:nth-child(2) i {
+    background: url("../img/allicon.png") -15px -26px no-repeat;
+    background-size: 64px 64px;
+}
+
+.submenu a:nth-child(3) i {
+    background: url("../img/allicon4.png") 0 -50px no-repeat;
+    background-size: 16px 128px;
+}
+
+.submenu a:nth-child(5) i {
+    background: url("../img/allicon4.png") 0 0px no-repeat;
+    background-size: 16px 128px;
+}
+
+.submenu a:nth-child(6) i {
+    background: url("../img/allicon4.png") 0 -31px no-repeat;
+    background-size: 16px 128px;
+}
+
+.submenu a:nth-child(8) i {
+    background: url("../img/allicon.png") -45px -14px no-repeat;
+    background-size: 64px 64px;
+}
+
+.submenu a:nth-child(9) i {
+    background: url("../img/allicon4.png") 0 -69px no-repeat;
+    background-size: 16px 128px;
+}
+
+/*会员课程*/
+.vip {
+    display: none;
+    position: absolute;
+    width: 280px;
+    height: 260px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+}
+
+.vip a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 40px;
+}
+
+.vip a span {
+    float: right;
+    margin-right: 10px;
+
+}
+
+.vip a i {
+    background: url("../img/allicon.png") 0 0 no-repeat;
+    background-size: 64px 64px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vip a:first-child i {
+    background-position: 0 -13px;
+}
+
+.vip a:nth-child(2) i {
+    background-position: -45px 0;
+}
+
+.vip a:nth-child(3) i {
+    background-position: -30px -13px;
+}
+
+.vip a:nth-child(4) i {
+    background-position: 0px 0;
+}
+
+.vip a:nth-child(5) i {
+    background-position: -15px -13px;
+}
+
+.vip a:nth-child(6) i {
+    background-position: -16px 0;
+}
+
+/*极客社区*/
+.social {
+    display: none;
+    position: absolute;
+    width: 280px;
+    height: 160px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+}
+
+.social a {
+    font-size: 14px;
+    font-weight: lighter;
+    display: block;
+    line-height: 40px;
+}
+
+.social a span {
+    float: right;
+    margin-right: 10px;
+
+}
+
+.social a i {
+    background: url("../img/allicon.png") 0 0 no-repeat;
+    background-size: 64px 64px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.social a i {
+    background: url("../img/allicon.png") 0 0 no-repeat;
+    background-size: 64px 64px;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.social a:first-child i {
+    background-position: 0 -27px;
+}
+
+.social a:nth-child(2) i {
+    background-position: -29px -27px;
+}
+
+.social a:nth-child(3) i {
+    background-position: 0px 2px;
+}
+
+.social a:nth-child(4) i {
+    background-position: -30px 0px;
+}
+
+/*内容区域主体*/
+.content {
+    background: #F6F6F6;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+#aside {
+    width: 210px;
+    height: 597px;
+    background: #ffffff;
+    position: relative;
+    float: left;
+}
+
+.allLesson {
+    border: 1px solid #35b558;
+}
+
+#aside .allLesson h2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #35b558;
+    text-align: left;
+    line-height: 45px;
+    border-bottom: 1px solid #eeeeee;
+    padding-left: 40px;
+    position: relative;
+}
+
+#aside .allLesson h2::before {
+    content: '';
+    background-image: url(../img/kec.png);
+    background-size: 15px 15px;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 14px;
+    top: 13px;
+}
+
+#aside .allLesson ul li {
+
+    height: 38px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+#aside .allLesson ul li a {
+    color: #666;
+    line-height: 38px;
+    position: relative;
+    display: block;
+    padding-left: 40px;
+}
+
+#aside .allLesson ul li a::after {
+    content: '';
+    background-image: url(../img/icon-dayu.png);
+    background-size: 6px 10px;
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    right: 20px;
+    top: 15px;
+}
+
+#aside .allLesson ul li .list_show {
+    width: 400px;
+    height: 438px;
+    background: #fff;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .1);
+    /*float: left;*/
+    position: absolute;
+    left: 210px;
+    top: 0;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: none;
+    margin-left: -1px;
+    border: 1px solid #ddd;
+    z-index: 1000;
+}
+
+#aside .allLesson ul li .list_show dl {
+    padding: 0 15px;
+    position: relative;
+}
+
+#aside .allLesson ul li .list_show dl dt {
+    border-bottom: 1px solid #f5f5f5;
+    /*line-height: 45px;*/
+
+}
+
+#aside .allLesson ul li .list_show dl dd {
+    margin-bottom: 20px;
+}
+
+#aside .allLesson ul li:hover {
+    padding-left: -40px;
+}
+
+#aside .allLesson ul li:hover a {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    height: 38px;
+    width: 220px;
+    margin-top: -1px;
+    margin-left: -1px;
+    padding-left: 24px;
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .1);
+    border-right: none;
+    background: #fff;
+}
+
+#aside .allLesson ul li:hover .list_show {
+    display: block;
+}
+
+#aside .lujing {
+
+}
+
+#aside .lujing a {
+    color: #333;
+    font-size: 14px;
+    line-height: 40px;
+    display: block;
+    padding-left: 40px;
+    width: 170px;
+    height: 40px;
+    position: relative;
+}
+
+#aside .lujing a span {
+    color: #C7C7C7;
+    font-size: 12px;
+    /*margin-right:10px;*/
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+#aside .lujing ul li:hover a {
+    background-color: #FBFBFB;
+}
+
+#aside .lujing ul li:hover a span {
+    display: inline;
+}
+
+/*右侧内容区域*/
+#lessonContent {
+    width: 770px;
+    /*border: 1px solid #bfa3ff;*/
+    height: auto;
+    float: left;
+    margin-left: 20px;
+    box-sizing: border-box;
+}
+
+.sortMode {
+    width: 770px;
+    height: 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.sortMode h3 {
+    float: left;
+    padding: 0 21px;
+    background: #fff;
+    border-right: 1px solid #f5f5f5;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: default;
+    line-height: 40px;
+}
+
+.sortMode dl {
+    height: 40px;
+    /*overflow: hidden;*/
+    position: relative;
+}
+
+.sortMode dd {
+    /*position: relative;*/
+    background: #ffffff;
+    position: absolute;
+    z-index: 100;
+    display: none;
+}
+
+dt, dd {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.sortMode dl {
+
+    text-align: center;
+    float: left;
+    width: 100px;
+    background: #fff;
+
+    box-sizing: border-box;
+}
+
+.sortMode dl dd {
+    text-align: center;
+    position: relative;
+    /*display: none;*/
+}
+
+.sortMode dl dt .arrow {
+    margin-left: 2px;
+    width: 1px;
+    height: 1px;
+    border-left: 1px solid #C6C6C6;
+    border-top: 1px solid #C6C6C6;
+    transform: rotate(-135deg);
+    vertical-align: -2px;
+    margin-bottom: 2px;
+}
+
+.sortMode dl:hover .arrow {
+    display: none;
+}
+
+.sortMode dl:hover {
+    border: 1px solid #eee;
+}
+
+.sortMode dl:hover dd {
+    display: block;
+}
+
+/*右侧切换按钮*/
+.previewMode {
+    float: right;
+}
+
+.previewMode li {
+    position: relative;
+    float: left;
+    width: 36px;
+    height: 38px;
+    border-left: 1px solid #f5f5f5;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.previewMode li .icon {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    background: url(https://s1.jikexueyuan.com/course/images/preview-icon_2ae2eb9.png) no-repeat 0 0;
+    line-height: 40px;
+}
+
+.previewMode .kuai-icon .icon {
+    width: 14px;
+    background: url(https://s1.jikexueyuan.com/course/images/icon-kuai_3c1a8cf.png) no-repeat 0 0;
+    background-size: 14px;
+}
+
+.previewMode .list-icon .icon {
+    width: 19px;
+    background: url(https://s1.jikexueyuan.com/course/images/icon-list_6d9f87f.png) no-repeat center;
+    background-size: 16px 12px;
+}
+
+/*页面课程*/
+.lessonList {
+    margin-top: 20px;
+}
+
+.lessonList ul li {
+    width: 250px;
+    height: 225px;
+    /*border: 1px solid #bfa3ff;*/
+    background: #fff;
+    float: left;
+}
+
+.lessonList ul li:nth-child(3n+2) {
+    margin-left: 5px;
+}
+
+.lessonList ul li:nth-child(3n+3) {
+    margin-left: 5px;
+}
+
+.lessonList ul li:nth-child(n+4) {
+    margin-top: 5px;
+}
+
+.lessonList ul li:hover {
+    transition: height 0.3s linear;
+
+}
+
+.lessonList ul li .lessonimg-box {
+    position: relative;
+}
+
+.lessonList ul li .lessonplay {
+    background: rgba(0, 0, 0, .4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*hover*/
+    opacity: 0;
+}
+
+.lessonList ul li:hover .lessonplay {
+    transition: opacity 0.3s linear;
+    opacity: 1;
+}
+
+/*hover*/
+.lessonList ul li .lessonplay i {
+    position: absolute;
+    z-index: 120;
+    width: 50px;
+    height: 50px;
+    display: block;
+    left: 50%;
+    margin-left: -25px;
+    top: 50%;
+    margin-top: -25px;
+    background: url(https://s1.jikexueyuan.com/common/images/player_icon_5c67475.png) 0 0 no-repeat;
+    cursor: pointer;
+    background-size: 50px 50px;
+}
+
+.lessonList .lesson-infor {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 98px;
+    position: relative;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.lessonList ul li:hover .lesson-infor {
+    position: relative;
+    height: 158px;
+    background: #fff;
+    border: 1px solid #bfa3ff;
+    transition: height 0.3s linear;
+}
+
+.lessonList .lesson-infor h2 {
+    font-size: 14px;
+    color: #333;
+    line-height: 36px;
+    margin-bottom: 12px;
+    height: 36px;
+    overflow: hidden;
+}
+
+.lessonList .lesson-infor p {
+    color: gray;
+    font-size: 12px;
+    line-height: 18px;
+    height: 0px;
+    overflow: hidden;
+    /*opacity: 0;*/
+    margin-bottom: 10px;
+    /*display: none;*/
+}
+
+.lessonList ul li:hover .lesson-infor p {
+    transition: opacity 0.3s linear;
+    opacity: 1;
+    display: block;
+    height: 40px;
+}
+
+.lessonList .timeandicon {
+    font-size: 12px;
+    color: gray;
+    position: relative;
+}
+
+.lessonList .timeandicon dl {
+    width: 120px;
+    float: left;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.lessonList .timeandicon dl dd {
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    line-height: normal;
+}
+
+.lessonList .timeandicon dl dd i {
+    background: url(https://s1.jikexueyuan.com/common/images/clok_a413ecf.png) 0 0 no-repeat;
+    width: 14px;
+    height: 14px;
+    display: block;
+    float: left;
+    margin-right: 8px;
+    background-size: 14px 14px;
+}
+
+.lessonList .timeandicon em {
+    font-style: normal;
+
+}
+
+.lessonList .timeandicon .cf > em {
+    display: none;
+}
+
+.lessonList ul li:hover .timeandicon .cf > em {
+    display: block;
+}
+
+.lessonList .timeandicon .cf img {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.lessonList .timeandicon .cf dl dd:nth-child(2) {
+    display: none;
+}
+
+.lessonList ul li:hover .timeandicon .cf dl dd:nth-child(2) {
+    display: block;
+}
+
+/*
+课程第二套布局，前面务必都加唯一的类:lesson-list2
+这样，js中切换lesson-list2即可实现切换。
+*/
+
+.lesson-list2 .onelesson {
+    height: 100px;
+    width: 765px;
+    padding: 0;
+    background-color: #fff;
+    margin-top: 13px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.lesson-list2 .lessonimg-box {
+    width: 185px;
+    height: 100px;
+    float: left;
+}
+
+.lesson-list2 ul li .lessonimg-box {
+    position: relative;
+}
+
+.lesson-list2 ul li .lessonplay {
+    background: rgba(0, 0, 0, .4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*hover*/
+    opacity: 0;
+}
+
+.lesson-list2 ul li:hover .lessonplay {
+    transition: opacity 0.3s linear;
+    opacity: 1;
+}
+
+/*hover*/
+.lesson-list2 ul li .lessonplay i {
+    position: absolute;
+    z-index: 120;
+    width: 50px;
+    height: 50px;
+    display: block;
+    left: 50%;
+    margin-left: -25px;
+    top: 50%;
+    margin-top: -25px;
+    background: url(https://s1.jikexueyuan.com/common/images/player_icon_5c67475.png) 0 0 no-repeat;
+    cursor: pointer;
+    background-size: 50px 50px;
+}
+
+/*第二套右侧部分*/
+.lesson-list2 .lesson-infor {
+    width: 560px;
+    height: 100px;
+    float: left;
+    margin-left: 20px;
+    position: relative;
+}
+
+.lesson-list2 .lesson-infor h2 {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.lesson-list2 .lesson-infor p {
+    color: gray;
+    font-size: 12px;
+    opacity: 1 !important;
+    line-height: 18px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.lesson-list2 .timeandicon dl {
+    width: 240px;
+    float: left;
+    white-space: nowrap;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.lesson-list2 .timeandicon dl dd {
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    line-height: normal;
+    float: left;
+}
+
+.lesson-list2 .timeandicon dl dd:nth-child(2) {
+    margin-left: 20px;
+}
+
+.lesson-list2 .timeandicon dl dd i {
+    background: url(https://s1.jikexueyuan.com/common/images/clok_a413ecf.png) 0 0 no-repeat;
+    width: 14px;
+    height: 14px;
+    display: block;
+    float: left;
+    margin-right: 8px;
+    background-size: 14px 14px;
+}
+
+.lesson-list2 .timeandicon .cf em {
+    float: right;
+    margin-right: 20px;
+    font-style: normal;
+}
+
+.lesson-list2 .timeandicon .cf img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    text-align: right;
+}
+
+/*翻页*/
+#page-nav {
+    text-align: center;
+    margin: 24px 0;
+    height: 28px;
+}
+
+#page-nav ul {
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+#page-nav li {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    margin-left: 5px;
+    line-height: 30px;
+    border: 1px solid #fff;
+    text-align: center;
+    font-size: 12px;
+    background: #fff;
+    color: gray;
+    border: 1px solid #e4e4e4;
+    box-sizing: border-box;
+}
+
+#page-nav input {
+    outline: none;
+    width: 32px;
+    height: 22px;
+    border: 1px solid #e4e4e4;
+    color: #666;
+    line-height: 22px;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+#page-nav .pgNext {
+    width: 50px;
+}
+
+#page-nav .pagetotal {
+    width: 50px;
+    border: none;
+}
+
+#page-nav .pagenow {
+    width: 100px;
+    border: none;
+    background: none;
+}
+
+#page-nav .go {
+    width: 32px;
+}
+
+#page-nav .thpoint {
+    border: none;
+    background: none;
+}
+
+#page-nav .pgCurrent {
+    background: #3CBD63;
+    color: #FFFFFF;
+}
+
+#page-nav .page-number:hover {
+    border: 1px solid #3CBD63;
+}
+
+/*
+=======================================
+                搜索框
+=======================================
+*/
+.searchbox {
+    width: 850px;
+    width: 0;
+    height: 60px;
+    margin-left: 150px;
+    position: relative;
+    right: 0;
+    z-index: 1000;
+    position: absolute;
+    background: #fff;
+    overflow: hidden;
+
+}
+
+.searchbox .close-icon {
+    width: 15px;
+    height: 15px;
+    margin-top: 22px;
+    cursor: pointer;
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/close-icon.png) 0 0 no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    z-index: 1200;
+}
+
+.searchbox .search-icon {
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/search-icon.png) 0 0 no-repeat;
+    background-size: 17px 17px;
+    background-position: 0, 0;
+    height: 17px;
+    width: 17px;
+    display: inline-block;
+    margin-top: 22px;
+}
+
+.searchbox input {
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    font-size: 12px;
+    vertical-align: top;
+    margin-left: 10px;
+    padding-left: 20px;
+    outline: none;
+    border: none;
+}
+
+.searchbox .tagbox a {
+    margin-left: 15px;
+    line-height: 60px;
+    background: #f6f6f6;
+    /*display: inline-block;*/
+    /*height: 12px;*/
+    font-size: 14px;
+    color: #808080;
+    padding: 3px 5px;
+}
+
+.searchbox .tagbox {
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+}
+
+/*footer*/
+.footer {
+    /*margin-top:50px;*/
+    padding-top: 20px;
+    border-top: 1px solid #e4e4e4;
+}
+
+.jk-logo {
+    float: left;
+}
+
+.jk-logo img {
+    width: 109px;
+    height: 40px;
+}
+
+.jkinfor .jk-logo p {
+    font-size: 12px;
+    color: #999;
+    margin-top: 20px;
+}
+
+.jkinfor dl {
+    float: left;
+    margin-left: 80px;
+    color: #808080;
+}
+
+.jkinfor dl dt {
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.jkinfor dl dd {
+    font-size: 12px;
+    line-height: 30px;
+}
+
+.jkinfor dl dd a {
+    color: #999999;
+}
+
+.jkinfor dl dd a:hover {
+    color: #35b558;
+}
+
+.jk-down p {
+    color: #808080;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+/*返回顶部小图标
+==============================
+直觉上fix是基于浏览器四边窗口进行定位
+这里首先进行居中，然后居中宽度是w1000
+这里向右偏移510左右即可得到我们需要的效果
+==============================
+
+*/
+.gototop {
+    position: fixed;
+    left: 50%;
+    margin-left: 510px;
+    bottom: 50px;
+    width: 34px;
+}
+
+.gototop .top {
+    /*display: none;*/
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/gotop.jpg) 0 0 no-repeat;
+    background-size: 34px 103px;
+    width: 34px;
+    height: 34px;
+}
+.gototop .top:hover {
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/gotop2.jpg) 0 0 no-repeat;
+    background-position: 0 0;
+    background-size: 34px 103px;
+}
+
+.gototop .jk-app {
+    position: relative;
+    display: block;
+    background: #f7f7f7 url(http://e.jikexueyuan.com/headerandfooter/images/phone-1.png) center center no-repeat;
+    background-size: 12px 24px;
+    width: 34px;
+    height: 35px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.gototop .jk-app .appewm {
+    background: url(http://e.jikexueyuan.com/headerandfooter/images/appewm.png) center center no-repeat;
+    background-size: 100%;
+    width: 126px;
+    height: 159px;
+    position: absolute;
+    z-index: 2100;
+    left: -126px;
+    top: -70px;
+    display: none;
+}
+
+.gototop .jk-app:hover {
+    background: #f7f7f7 url(http://e.jikexueyuan.com/headerandfooter/images/phone-2.png) center center no-repeat;
+    background-size: 12px 24px;
+}
+
+.gototop .jk-app:hover .appewm {
+    display: block;
+}

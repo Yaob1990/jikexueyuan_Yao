@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <link rel="stylesheet" href="css/cube.css">
+    <link rel="stylesheet" href="css/cal.css">
+</head>
+<body>
+<div class="cal">
+    <div class="result">
+        <input type="text" id="out" readonly="readonly">
+    </div>
+    <div class="content">
+        <button class="btn" value="sin" onclick="sin_num()">sin( )</button>
+        <button class="btn" value="C" onclick="cos_num()">cos( )</button>
+        <button class="btn" value="C" onclick="tan_num()">tan( )</button>
+        <button class="btn" value="C" onclick="square()">x<sup>2</sup></button>
+        <button class="btn" value="C" onclick="clearAll()">清屏</button>
+        <button class="btn" value="Back" onclick="Back()">退格</button>
+        <button class="btn" value="clear" onclick="clear_again()">重输</button>
+        <button class="btn" value="/" onclick="calculation(this)">&divide;</button>
+        <button class="btn" value="7" onclick="calculate_num(this)">7</button>
+        <button class="btn" value="8" onclick="calculate_num(this)">8</button>
+        <button class="btn" value="9"onclick="calculate_num(this)">9</button>
+        <button class="btn" value="*" onclick="calculation(this)">&times;</button>
+        <button class="btn" value="4"onclick="calculate_num(this)">4</button>
+        <button class="btn" value="5"onclick="calculate_num(this)">5</button>
+        <button class="btn" value="6"onclick="calculate_num(this)">6</button>
+        <button class="btn" value="-" onclick="calculation(this)">-</button>
+        <button class="btn" value="1"onclick="calculate_num(this)">1</button>
+        <button class="btn" value="2"onclick="calculate_num(this)">2</button>
+        <button class="btn" value="3"onclick="calculate_num(this)">3</button>
+        <button class="btn" value="+" onclick="calculation(this)">+</button>
+        <button class="btn" value="+/-" onclick="minus()">+/-</button>
+        <button class="btn" value="0"onclick="calculate_num(this)">0</button>
+        <button class="btn" value="."onclick="calculate_num(this)">.</button>
+        <button class="btn" value="=" onclick="getResult(this)">=</button>
+    </div>
+    <script type="text/javascript" src="js/cal.js"></script>
+</div>
+</body>
+</html>
