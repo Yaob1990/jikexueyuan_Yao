@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "任务9/nodeBaidu/package.json"
+      ]
+    }
+  }
+}
